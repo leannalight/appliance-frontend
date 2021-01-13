@@ -1,0 +1,24 @@
+.app-item {
+    width: 150px;
+    height: 120px;
+    margin-right: 9px;
+    border-radius: 9px;
+    color: white;
+    background-color: slateblue;
+}
+
+.app-item ul {
+    list-style: none;
+    padding: 0 0 0 5px;
+}
+
+.app-item li {
+    font-size: 0.9rem;
+}
+
+.app-item button {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}

@@ -1,1 +1,1 @@
-# appliance-frontend
+# Appliance frontend

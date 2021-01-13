@@ -1,0 +1,11 @@
+.popup-settings {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.popup-settings h3 {
+    margin-top: 40px;
+    font-size: 1.8rem;
+    color: grey;
+}

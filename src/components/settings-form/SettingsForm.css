@@ -1,0 +1,19 @@
+.item-add-form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.item-add-form label {
+    max-width: 220px;
+    margin-right: 10px;
+}
+
+.item-add-form button {
+    width: 70px;
+    margin: 3px;
+    color: white;
+    background-color: royalblue;
+}
+
