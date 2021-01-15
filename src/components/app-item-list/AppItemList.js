@@ -3,7 +3,7 @@ import React from 'react';
 import './AppItemList.css';
 import AppItem from '../app-item';
 
-const AppItemList = ({ allItems, onDeleted}) => {
+const AppItemList = ({ allItems, onDeleted }) => {
 
     const elements = allItems.map((item) => {
         const { id, ...itemProps } = item;

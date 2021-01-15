@@ -7,10 +7,6 @@ export default class ItemStatusFilter extends Component {
             <div className="btn-group">
                 <button type="button"
                         className="btn btn-info">All</button>
-            <button type="button"
-                    className="btn btn-outline-secondary">Progress</button>
-            <button type="button"
-                    className="btn btn-outline-secondary">Complete</button>
             </div>
         );
     }

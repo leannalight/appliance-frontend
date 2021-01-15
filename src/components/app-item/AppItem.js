@@ -5,7 +5,7 @@ import './AppItem.css';
 export default class AppItem extends Component {
 
     render() {
-        const { title, programme, timer, temperature, onDeleted } = this.props;
+        const { title, programme, timer, temperature, onDeleted, onTogglePopup } = this.props;
 
         return (
             <div className="app-item">
@@ -23,7 +23,7 @@ export default class AppItem extends Component {
                     </button>
                     <button type="button"
                             className="btn btn-outline-info"
-                            onClick={onDeleted}>
+                            onClick={onTogglePopup}>
                         <i className="fa fa-pencil-square-o small" />
                     </button>
                 </div>

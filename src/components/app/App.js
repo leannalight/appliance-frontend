@@ -18,15 +18,16 @@ export default class App extends Component {
     this.createApplianceItem('Appliance One'),
     this.createApplianceItem('Appliance Two'),
     this.createApplianceItem('Appliance Three')
-  ]
+  ],
+  seen: false
  };
 
- createApplianceItem(title) {
+ createApplianceItem(title, programme, timer, temperature) {
    return {
     title,
-    programme: '0',
-    timer: '0',
-    temperature: '0',
+    programme,
+    timer,
+    temperature,
     id: this.maxId++
    }
  }
@@ -46,7 +47,7 @@ export default class App extends Component {
   });
 };
 
-addItem = (text) => {
+  addItem = (text) => {
   // generate id ?
   const newItem = this.createApplianceItem(text);
   /*{
@@ -71,6 +72,48 @@ addItem = (text) => {
   });
 };
 
+  updateItem = (text) => {
+
+  }
+
+  togglePopup = () => {
+    this.setState({
+      seen: !this.state.seen
+    });
+  };
+
+  toggleProperty(arr, id, propName) {
+    const idx = arr.findIndex((el) => el.id === id);
+
+      // 1. update object
+      const oldItem = arr[idx];
+      const newItem = {...oldItem,
+        [propName]: !oldItem[propName]};
+
+      // 2. return new array
+      return [
+        ...arr.slice(0, idx),
+        newItem,
+        ...arr.slice(idx + 1)
+      ];
+  }
+
+  onToggleProgramme = (id) => {
+    this.setState(({ itemsAllData }) => {
+      return {
+        itemsAllData: this.toggleProperty(itemsAllData, id, 'programme')
+      };
+    });
+  };
+
+  onToggleTimer = (id) => {
+    this.setState(({ itemsAllData }) => {
+      return {
+        itemsAllData: this.toggleProperty(itemsAllData, id, 'timer')
+      };
+    });
+  };
+
   render() {
 
     const { itemsAllData } = this.state;
@@ -87,11 +130,13 @@ addItem = (text) => {
           </div>
           <AppItemList 
             allItems={ this.state.itemsAllData }
-            onDeleted={ this.deleteItem } />
+            onDeleted={ this.deleteItem }
+            onUpdated={ this.updateItem } />
           
-          <PopupSettings />
+          {this.state.seen ? <PopupSettings onTogglePopup={this.togglePopup} /> : null}
 
-          <ItemAddForm onItemAdded={this.addItem}/>
+          <ItemAddForm 
+            onItemAdded={ this.addItem } />
       </div>
     );
   }

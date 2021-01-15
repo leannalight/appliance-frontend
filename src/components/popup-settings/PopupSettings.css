@@ -4,8 +4,8 @@
     height: auto;
 }
 
-.popup-settings h3 {
+.popup-settings p {
     margin-top: 40px;
     font-size: 1.8rem;
-    color: grey;
+   /* color: grey; */
 }
