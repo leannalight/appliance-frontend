@@ -3,7 +3,7 @@ import React from 'react';
 import './AppItemList.css';
 import AppItem from '../app-item';
 
-const AppItemList = ({ allItems, onDeleted }) => {
+const AppItemList = ({ allItems, onDeleted, onTogglePopup }) => {
 
     const elements = allItems.map((item) => {
         const { id, ...itemProps } = item;
@@ -11,7 +11,8 @@ const AppItemList = ({ allItems, onDeleted }) => {
         return (  
             <li key={id}>
                 <AppItem { ...itemProps } 
-                onDeleted={() => onDeleted(id)} />
+                onDeleted={() => onDeleted(id)}
+                onTogglePopup={() => onTogglePopup(id)} />
             </li> 
         );
     });

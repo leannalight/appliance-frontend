@@ -5,3 +5,10 @@
 .item-add-form input {
     margin-right: 3px;
 }
+
+.item-add-form button {
+    width: 70px;
+    margin: 0;
+    color: white;
+    background-color: royalblue;
+}

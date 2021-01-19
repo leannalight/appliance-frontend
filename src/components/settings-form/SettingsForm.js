@@ -24,7 +24,7 @@ export default class SettingsForm extends Component {
 
     render() {
      return (
-        <form className="item-add-form d-flex"
+        <form className="settings-form d-flex"
                 onSubmit={this.onSubmit}>
             <label>
                 PROGRAMME

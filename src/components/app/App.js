@@ -4,7 +4,7 @@ import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import ItemStatusFilter from '../item-status-filter';
 import AppItemList from '../app-item-list';
-import PopupSettings from '../popup-settings';
+import Popup from '../popup';
 import ItemAddForm from '../item-add-form';
 
 import './App.css';
@@ -14,12 +14,12 @@ export default class App extends Component {
  maxId = 100;
 
  state = {
+  showPopup: false,
   itemsAllData: [
     this.createApplianceItem('Appliance One'),
     this.createApplianceItem('Appliance Two'),
     this.createApplianceItem('Appliance Three')
-  ],
-  seen: false
+  ]
  };
 
  createApplianceItem(title, programme, timer, temperature) {
@@ -76,12 +76,6 @@ export default class App extends Component {
 
   }
 
-  togglePopup = () => {
-    this.setState({
-      seen: !this.state.seen
-    });
-  };
-
   toggleProperty(arr, id, propName) {
     const idx = arr.findIndex((el) => el.id === id);
 
@@ -114,6 +108,12 @@ export default class App extends Component {
     });
   };
 
+  togglePopup = (id) => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+   };
+
   render() {
 
     const { itemsAllData } = this.state;
@@ -131,13 +131,20 @@ export default class App extends Component {
           <AppItemList 
             allItems={ this.state.itemsAllData }
             onDeleted={ this.deleteItem }
-            onUpdated={ this.updateItem } />
-          
-          {this.state.seen ? <PopupSettings onTogglePopup={this.togglePopup} /> : null}
+            onUpdated={ this.updateItem }
+            onTogglePopup={this.togglePopup} />
 
           <ItemAddForm 
             onItemAdded={ this.addItem } />
+
+          {this.state.showPopup ?
+            <Popup 
+              text='Select Settings'
+              closePopup={this.togglePopup.bind(this)}
+            />
+            : null
+          }
       </div>
     );
   }
-}
+};
